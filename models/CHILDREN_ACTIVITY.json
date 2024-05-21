@@ -1,0 +1,45 @@
+{
+    "activities": [
+        {
+            "age": [1,2,3, 4, 5],
+            "mandatory_activity": [
+                {"name": "EDUCATION_förskola", "probability": 1}
+            ],
+            "time_range": {"start": "0730", "end": "1400"},
+            "duration": 3,
+            "after_school": [
+                {"activity": "LEISURE_playground", "duration": "0060", "variance": "0015"},
+                {"activity": "LEISURE_sports", "duration": "0060", "variance": "0015"},
+                {"activity": "None", "duration": "0", "variance": "0"}
+            ]
+        },
+        {
+            "age": [6, 7,8],
+            "mandatory_activity": [
+                {"name": "EDUCATION_förskoleklass", "probability": 1}
+            ],
+            "time_range": {"start": "0830", "end": "1700"},
+            "duration": 5,
+            "after_school": [
+                {"activity": "LEISURE_playground", "duration": "0090", "variance": "0035"},
+                {"activity": "LEISURE_sports", "duration": "0090", "variance": "0025"},
+                {"activity": "None", "duration": "0", "variance": "0"}
+            ]
+        },
+        {
+            "age": [9,10,11,12,13,14,15,16,17,18],
+            "mandatory_activity": [
+                {"name": "EDUCATION_grundskola", "probability": 0.3},
+                {"name": "EDUCATION_gymnasieskola", "probability": 0.7}
+            ],
+            "time_range": {"start": "0730", "end": "1700"},
+            "duration": 9,
+            "after_school": [
+                {"activity": "LEISURE_playground", "duration": "0090", "variance": "0015"},
+                {"activity": "LEISURE_sports", "duration": "0090", "variance": "0015"},
+                {"activity": "None", "duration": "0", "variance": "0"}
+            ]
+        }
+
+    ]
+}
