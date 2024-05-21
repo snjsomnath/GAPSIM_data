@@ -36,18 +36,18 @@ class Population:
     various population metrics such as age, household type, sex, etc.
 
     Attributes:
-    - year (int): The year for which the population data is represented.
-    - area (str): The geographical area for which the population data is represented.
-    - variables (List[str]): List of variables associated with the population data.
-    - variable_categories (List[str]): List of categories for each variable.
-    - comment (str): Additional comments or notes associated with the population data.
-    - array_age_household_sex (np.ndarray): 3D array representing population data by age, household, and sex.
-    - array_age_sex (np.ndarray): 2D array representing population data by age and sex.
-    - array_age_household (np.ndarray): 2D array representing population data by age and household.
-    - Other arrays...
+        year (int): The year for which the population data is represented.
+        area (str): The geographical area for which the population data is represented.
+        variables (List[str]): List of variables associated with the population data.
+        variable_categories (List[str]): List of categories for each variable.
+        comment (str): Additional comments or notes associated with the population data.
+        array_age_household_sex (np.ndarray): 3D array representing population data by age, household, and sex.
+        array_age_sex (np.ndarray): 2D array representing population data by age and sex.
+        array_age_household (np.ndarray): 2D array representing population data by age and household.
+        Other arrays...
 
     Class Attributes:
-    - instances (List[Population]): List to keep track of all instances of the Population class.
+        instances (List[Population]): List to keep track of all instances of the Population class.
 
     Example:
         >>> population_2022_haga = Population(2023, "Haga")

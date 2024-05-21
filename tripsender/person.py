@@ -35,36 +35,24 @@ class Person:
     """
     Represents an individual with attributes like age, gender, household status, etc.
 
+    A person object consists of demographic attributes such as age, sex, household type, and primary status (studying, working or inactive) and a unique identifier.
+    Further, the person object is equipped with relational attributes such as a household identifier, the origin of the building they belong to, a parent identifier and a work location.
+
     Attributes:
-    -----------
-    uuid : uuid.UUID
-        Unique identifier for the person.
-    household_uuid : Optional[uuid.UUID]
-        Identifier for the person's household.
-    parent_uuid : List[uuid.UUID]
-        Identifiers for the person's parents.
-    age : int
-        Age of the person.
-    sex : str
-        Gender of the person.
-    household_type : str
-        Type of household the person belongs to.
-    household : Optional[Household]
-        Household instance the person is part of.
-    has_car : bool
-        Whether the person owns a car.
-    child_count : int
-        Number of children the person has.
-    is_head : bool
-        If the person is the head of the household.
-    is_child : bool
-        If the person is a child in the household.
-    origin : Optional[Point]
-        Origin of the person.
-    activity_sequence : Optional[ActivitySequence]
-        Activity sequence associated with the person.
-    instances : list[Person]
-        Class attribute to track all person instances.
+        uuid (uuid.UUID): Unique identifier for the person.
+        household_uuid (Optional[uuid.UUID]): Identifier for the person's household.
+        parent_uuid (List[uuid.UUID]): Identifiers for the person's parents.
+        age (int): Age of the person.
+        sex (str): Gender of the person.
+        household_type (str): Type of household the person belongs to.
+        household (Optional[Household]): Household instance the person is part of.
+        has_car (bool): Whether the person owns a car.
+        child_count (int): Number of children the person has.
+        is_head (bool): If the person is the head of the household.
+        is_child (bool): If the person is a child in the household.
+        origin (Optional[Point]): Origin of the person.
+        activity_sequence (Optional[ActivitySequence]): Activity sequence associated with the person.
+        instances (list[Person]): Class attribute to track all person instances.
     """
 
     instances: List['Person'] = []

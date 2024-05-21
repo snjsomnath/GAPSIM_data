@@ -1,0 +1,25 @@
+site_name: Tripsender Documentation
+extra_css:
+  - stylesheets/extra.css
+plugins:
+  - mkdocstrings:
+      enabled: true
+      default_handler: python
+  - search
+nav:
+  - Welcome to tripsender: index.md
+  - API Documentation:
+      - activity: activity.md
+      - building: building.md
+      - house: house.md
+      - household: household.md
+      - io: io.md
+      - location_assignment: location_assignment.md
+      - nhts: nhts.md
+      - od: od.md
+      - person: person.md
+      - population: population.md
+      - routing: routing.md
+      - sampler: sampler.md
+      - synthpop: synthpop.md
+      - utils: utils.md

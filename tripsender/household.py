@@ -40,7 +40,31 @@ FEMALE = 'Kvinnor'
 COUPLE = 'Couple'
 
 class Household:
-    """A class that represents a household with members, cars, and other properties."""
+    """
+    Represents a household with members, cars, and other properties.
+
+    A household represents a collection of persons that live together. It comprises:
+        - Household category
+        - House type
+        - List of household members
+        - Unique identifier
+        - Reference to a house object
+        - Preferred destinations for different activities related to the household
+        - Number of cars in the household
+        - Number of children in the household
+
+    Attributes:
+        uuid (UUID): Unique identifier for the household.
+        category (str): Category of the household.
+        children (int): Number of children in the household.
+        has_children (bool): Whether the household has children.
+        adults (int): Number of adults in the household.
+        members (List[Person]): List of members in the household.
+        house_type (Optional[str]): Type of house the household lives in.
+        house (Optional[House]): Reference to the house object associated with the household.
+        cars (int): Number of cars owned by the household.
+        head_of_household (Optional[Person]): The head of the household.
+    """
     instances: List['Household'] = []
     
     def __init__(self, category):

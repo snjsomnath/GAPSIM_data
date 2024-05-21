@@ -53,20 +53,56 @@ COEF_NATURE = 1/3
 COEF_SLOPE = 1/3
 dem_raster_path = "data/raw/dem/GOT_DEM.tif"
 def get_edge_lengths(G_ig):
+    """
+    Compute the lengths of geometries for each edge in the graph.
+
+    Args:
+        G_ig (igraph.Graph): The input graph.
+
+    Returns:
+        list: A list of edge lengths.
+    """
     logger.info("Computing lengths of geometries...")
     edge_lengths = [edge['length'] for edge in G_ig.es]
     return edge_lengths
 
 def get_edge_travel_time(G_ig):
+    """
+    Compute the travel times for each edge in the graph.
+
+    Args:
+        G_ig (igraph.Graph): The input graph.
+
+    Returns:
+        list: A list of travel times.
+    """
     logger.info("Computing lengths of geometries...")
     travel_time = [edge['travel_time'] for edge in G_ig.es]
     return travel_time
 
 def get_vertex_coords(G_ig):
+    """
+    Get the coordinates of vertices in the graph.
+
+    Args:
+        G_ig (igraph.Graph): The input graph.
+
+    Returns:
+        list: A list of tuples representing vertex coordinates.
+    """
     v_coords = [(vertex['x'], vertex['y']) for vertex in G_ig.vs]
     return v_coords
 
 def get_edge_coords(G_ig):
+    """
+    Get the coordinates of edges in the graph.
+
+    Args:
+        G_ig (igraph.Graph): The input graph.
+
+    Returns:
+        list: A list of tuples representing edge coordinates.
+    """
     edge_coords = []
     for edge in G_ig.es:
         # Get the source and target vertex indices of the edge
@@ -87,6 +123,18 @@ def get_edge_coords(G_ig):
     return edge_coords
 
 def find_closest_source_target(tree, G_ig, source_coord, targets_coords):
+    """
+    Find the closest source and target nodes in the graph using a KDTree.
+
+    Args:
+        tree (cKDTree): The KDTree for spatial indexing.
+        G_ig (igraph.Graph): The input graph.
+        source_coord (Point): The source coordinate.
+        targets_coords (list): The target coordinates.
+
+    Returns:
+        tuple: Closest source and target nodes.
+    """
     # Convert the POINT object to a list of coordinates for the source.
     source = [source_coord.x, source_coord.y]
     # Query the KDTree to find the index of the closest node to the source.
@@ -105,7 +153,16 @@ def find_closest_source_target(tree, G_ig, source_coord, targets_coords):
 
 ##################### Raster weight helpers ##################### 
 def read_and_clip_raster(dem_raster_path, convex_hull):
+    """
+    Read and clip a DEM raster using a convex hull.
 
+    Args:
+        dem_raster_path (str): Path to the DEM raster file.
+        convex_hull (Polygon): The convex hull for clipping.
+
+    Returns:
+        tuple: Clipped raster image, transform, and metadata.
+    """
     with rasterio.open(dem_raster_path) as dem_raster:  # Step 1
         bbox = box(*convex_hull.bounds)  # Step 2
         window = rasterio.windows.from_bounds(*bbox.bounds, dem_raster.transform)  # Step 3
@@ -122,7 +179,17 @@ def read_and_clip_raster(dem_raster_path, convex_hull):
     return out_img, out_transform, out_meta
 
 def process_landuse_data(landuse_vector, convex_hull, dem_raster_crs='EPSG:3006'):
+    """
+    Process land use data by clipping and dissolving geometries.
 
+    Args:
+        landuse_vector (GeoDataFrame): The land use vector data.
+        convex_hull (Polygon): The convex hull for clipping.
+        dem_raster_crs (str): The CRS of the DEM raster. Defaults to 'EPSG:3006'.
+
+    Returns:
+        GeoDataFrame: Processed and clipped land use vector data.
+    """
     # Filter to include only specified land use types, assuming this is less computationally expensive than clipping
     landuse_vector = landuse_vector[landuse_vector['detaljtyp'].isin(['SKOGBARR', 'ÖPMARK', 'VATTEN', 'SKOGLÖV', 'ODLÅKER'])]
 
@@ -140,7 +207,18 @@ def process_landuse_data(landuse_vector, convex_hull, dem_raster_crs='EPSG:3006'
     return clipped_vector_landuse
 
 def create_gradient(clipped_vector_landuse, out_shape, out_transform, max_distance=200.0):
+    """
+    Create a gradient effect of natural features.
 
+    Args:
+        clipped_vector_landuse (GeoDataFrame): Clipped land use vector data.
+        out_shape (tuple): Shape of the output raster.
+        out_transform (Affine): Transform of the output raster.
+        max_distance (float): Maximum distance for gradient scaling. Defaults to 200.0.
+
+    Returns:
+        ndarray: Gradient raster.
+    """
     # Rasterize the vector data, simplifying geometries to improve performance
     rasterized_vector = rasterize(
         [(geom, 1) for geom in clipped_vector_landuse.geometry.simplify(tolerance=0.1)],
@@ -169,6 +247,16 @@ def create_gradient(clipped_vector_landuse, out_shape, out_transform, max_distan
     return gradient
 
 def plot_gradient(gradient, transform, title='Gradient Effect of Natural Features', cmap='viridis', figsize=(10, 5)):
+    """
+    Plot the gradient effect of natural features.
+
+    Args:
+        gradient (ndarray): Gradient raster.
+        transform (Affine): Transform of the raster.
+        title (str): Title of the plot. Defaults to 'Gradient Effect of Natural Features'.
+        cmap (str): Colormap for the plot. Defaults to 'viridis'.
+        figsize (tuple): Figure size. Defaults to (10, 5).
+    """
     # Calculate the extent of the raster based on the transform
     # This defines the min and max of the x and y axes
     height, width = gradient.shape
@@ -194,11 +282,35 @@ def plot_gradient(gradient, transform, title='Gradient Effect of Natural Feature
     plt.show()
 
 def rowcol(transform, x, y):
+    """
+    Convert real-world coordinates to pixel coordinates.
+
+    Args:
+        transform (Affine): Affine transform.
+        x (float): X-coordinate.
+        y (float): Y-coordinate.
+
+    Returns:
+        tuple: Row and column indices.
+    """
     # Convert real-world coordinates to pixel coordinates using the affine transform
     col, row = ~transform * (x, y)  # Use the inverse transform to map (x, y) to (row, col)
     return int(row), int(col)
 
 def raster_value_at_line_ends(raster, transform, start_coord, end_coord, value_type='average'):
+    """
+    Retrieve raster values at the ends of a line segment.
+
+    Args:
+        raster (ndarray): The raster data.
+        transform (Affine): Affine transform of the raster.
+        start_coord (tuple): Start coordinate.
+        end_coord (tuple): End coordinate.
+        value_type (str): Type of value to return ('average' or 'absolute_difference').
+
+    Returns:
+        float: The calculated value.
+    """
     if value_type not in ('average', 'absolute_difference'):
         raise ValueError("value_type must be 'average' or 'absolute_difference'.")
     # Convert real-world coordinates to row and column indices
@@ -220,6 +332,15 @@ def raster_value_at_line_ends(raster, transform, start_coord, end_coord, value_t
     return val
 
 def normalise_list(input_list):
+    """
+    Normalize a list of values to a 0-1 range.
+
+    Args:
+        input_list (list): List of values.
+
+    Returns:
+        list: Normalized list of values.
+    """
     list_min = min(input_list)
     list_max = max(input_list)
     
@@ -227,7 +348,19 @@ def normalise_list(input_list):
 
 
 def compute_edge_weights(coords, edge_length, dem_raster_path , landuse_vector, convex_hull):
+    """
+    Compute edge weights for the graph based on edge length, slope, and proximity to natural features.
 
+    Args:
+        coords (list): List of coordinates for each edge.
+        edge_length (list): List of edge lengths.
+        dem_raster_path (str): Path to the DEM raster file.
+        landuse_vector (GeoDataFrame): Land use vector data.
+        convex_hull (Polygon): Convex hull for clipping.
+
+    Returns:
+        list: Computed edge weights.
+    """
     # Clip the DEM raster to the area of interest defined by the convex hull
     clipped_dem, out_transform, out_meta = read_and_clip_raster(dem_raster_path, convex_hull)
 
@@ -266,6 +399,18 @@ def compute_edge_weights(coords, edge_length, dem_raster_path , landuse_vector, 
 #####################  End of raster weight helpers #####################
 
 def path_to_linestring(path_indices, G_ig,s,t):
+    """
+    Convert a path in the graph to a LineString.
+
+    Args:
+        path_indices (list): List of vertex indices representing the path.
+        G_ig (igraph.Graph): The input graph.
+        s (str): Source node identifier.
+        t (str): Target node identifier.
+
+    Returns:
+        LineString or Point: The LineString representing the path or a Point if the path is a single point.
+    """
     # End the script if the path is empty or has only one point.
     if not path_indices :
         raise ValueError("path_to_linestring: The routing has returned an empty path or a single point, which is not sufficient for creating a LineString")
@@ -288,7 +433,20 @@ def path_to_linestring(path_indices, G_ig,s,t):
 
 
 def process_building(building, tree, A, G_ig, route_cache, mode):
+    """
+    Process a single building to compute routes to preferred locations.
 
+    Args:
+        building (Building): The building to process.
+        tree (cKDTree): KDTree for spatial indexing.
+        A (ndarray): Array of vertex coordinates.
+        G_ig (igraph.Graph): The input graph.
+        route_cache (dict): Cache to store computed routes.
+        mode (str): Mode of transportation ('walk', 'car', 'bike').
+
+    Returns:
+        Building: The updated building with computed routes.
+    """
     source_coord = building.coord
     preferred_locations = building.preferred_locations
     
@@ -329,7 +487,20 @@ def process_building(building, tree, A, G_ig, route_cache, mode):
     return building
 
 def process_building_batch(building_batch, tree, A, G_ig, route_cache,mode):
+    """
+    Process a batch of buildings to compute routes in parallel.
 
+    Args:
+        building_batch (list): List of buildings to process.
+        tree (cKDTree): KDTree for spatial indexing.
+        A (ndarray): Array of vertex coordinates.
+        G_ig (igraph.Graph): The input graph.
+        route_cache (dict): Cache to store computed routes.
+        mode (str): Mode of transportation ('walk', 'car', 'bike').
+
+    Returns:
+        list: List of updated buildings with computed routes.
+    """
     logger.info("Processing building batch...")
     for building in building_batch:
         process_building(building, tree, A, G_ig, route_cache, mode)
@@ -338,7 +509,13 @@ def process_building_batch(building_batch, tree, A, G_ig, route_cache,mode):
     return building_batch
 
 def compute_routes_for_all_buildings(mode = 'walk', parallel=False): # landuse_vector, convex_hull, 
-    
+    """
+    Compute routes for all buildings in the dataset.
+
+    Args:
+        mode (str): Mode of transportation ('walk', 'bike', 'drive'). Defaults to 'walk'.
+        parallel (bool): Whether to process buildings in parallel. Defaults to False.
+    """
     #Fetch the iGraph
     G_ig = io.fetch_igraph(mode)
 
@@ -391,6 +568,30 @@ def compute_routes_for_all_buildings(mode = 'walk', parallel=False): # landuse_v
 
 class TransitMatrixComputer:
     def __init__(self, hdf5_path = hdf5_path,origins_gdf = origins_gdf):
+        """
+        A class to compute and manage a transit matrix, providing travel times between origin-destination pairs.
+
+        This class preprocesses data from an HDF5 file and uses a KDTree for fast lookup of travel times.
+        It also provides methods to query travel times and compute routes between coordinates.
+
+        Attributes:
+            hdf5_path (str): Path to the HDF5 file containing the transit data.
+            travel_times_dict (dict): Dictionary to store travel times between origin-destination pairs.
+            origins_gdf (GeoDataFrame): GeoDataFrame containing origin points.
+            points (ndarray): Array of coordinates extracted from the origins_gdf.
+            tree (KDTree): KDTree for spatial indexing of origin points.
+            ids (ndarray): Array of IDs corresponding to the origin points.
+
+        Methods:
+            preprocess_data():
+                Preprocess the data from the HDF5 file and store it in a dictionary for fast lookups.
+            get_closest_id_tree(lat, lon):
+                Get the closest origin ID to the given latitude and longitude using the KDTree.
+            query_travel_time(o, d):
+                Query the travel time between two coordinates.
+            compute_route(source_coord, target_coord):
+                Compute the route and travel time between source and target coordinates.
+        """
         self.hdf5_path = hdf5_path
         self.travel_times_dict = {}
         self.origins_gdf = origins_gdf
@@ -467,6 +668,30 @@ class TransitMatrixComputer:
 
 
 class NetworkRoutingComputer:
+    """
+    A class to compute network routes based on a specified mode of transportation.
+
+    This class provides methods to find the closest source and target nodes, compute routes, and manage the graph structure for routing.
+
+    Attributes:
+        mode (str): The mode of transportation ('walk', 'bike', 'drive').
+        G_ig (igraph.Graph): The graph representing the transportation network.
+        v_coordinates (list): List of vertex coordinates in the graph.
+        A (ndarray): Array of vertex coordinates.
+        tree (cKDTree): KDTree for spatial indexing of vertex coordinates.
+        names (list): List of vertex names.
+        weights (list): List of edge weights in the graph.
+        route_cache (dict): Cache to store computed routes.
+        speed_factor (int): Factor to adjust travel speed based on the mode of transportation.
+
+    Methods:
+        get_closest_source_target(source_coord, target_coord):
+            Find the closest source and target nodes in the graph for the given coordinates.
+        path_to_linestring(path_indices, G_ig, s, t):
+            Convert a path in the graph to a LineString.
+        compute_route(source_coord, target_coord, mode='walk'):
+            Compute the route and travel time between source and target coordinates.
+    """
     def __init__(self,mode,speed_factor = 4):
         self.mode = mode
         self.G_ig = io.fetch_igraph(mode)

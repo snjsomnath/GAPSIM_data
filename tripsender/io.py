@@ -18,6 +18,14 @@ __version__ = "0.0.1"
 
 import osmnx as ox
 import igraph as ig
+from pyrosm import OSM
+import sqlite3
+from tripsender.household import Household
+from tripsender.person import Person
+from tripsender.activity import Activity
+from tripsender.building import Building
+from tripsender.house import House
+import datetime
 from tripsender.logconfig import setup_logging
 
 logger = setup_logging(__name__)
@@ -50,8 +58,17 @@ def fetch_igraph(graph_type):
     G_ig = ig.Graph.from_networkx(G_nx)
     return G_ig
 
-from pyrosm import OSM
+
 def fetch_osm_graph(graph_type):
+    """
+    Fetches an igraph graph based on the type specified (drive, walk, bike).
+
+    Attributes:
+    graph_type (str): The type of graph to fetch.
+
+    Returns:
+    ig.Graph: The igraph graph object.
+    """
     path_to_pbf = "data\osm\GOT_OSM.pbf"
     osm = OSM(path_to_pbf)
     nodes, edges = osm.get_network(nodes=True, network_type=graph_type)
@@ -59,15 +76,18 @@ def fetch_osm_graph(graph_type):
     return G_ig
 
 
-import sqlite3
-from tripsender.household import Household
-from tripsender.person import Person
-from tripsender.activity import Activity
-from tripsender.building import Building
-from tripsender.house import House
-import datetime
+
 
 def write_to_database(area,year,od_matrix):
+    """
+    Writes the data to a database.
+
+    Attributes:
+    area (str): The area for which the data is being written.
+    year (int): The year for which the data is being written.
+    od_matrix (ODMatrix): The ODMatrix object containing the data to be written.
+    """    
+
     date_today = datetime.date.today()
     # Format yyyymmdd
     date_today = date_today.strftime("%Y%m%d")

@@ -30,6 +30,33 @@ from tripsender.logconfig import setup_logging
 logger = setup_logging(__name__)
 
 def generate_persons(population, num_persons=None):
+    """
+    Generate individual person objects based on the given population data.
+
+    This function generates a number of Person instances based on the demographic distribution
+    provided in the population data. It uses the age, household type, and sex categories to
+    proportionally create individuals that reflect the overall population structure.
+
+    Args:
+        population (Population): An instance of the Population class that contains demographic data.
+        num_persons (int, optional): The number of persons to generate. If not specified, the function
+                                      uses the total population size provided in the population data.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. If num_persons is specified, it uses that number; otherwise, it defaults to the total population size.
+    2. It clears any existing Person instances to start fresh.
+    3. It calculates the proportional distribution of individuals across different categories of age,
+       household type, and sex based on the provided population data.
+    4. It iterates through the categories, creating the appropriate number of Person instances for each
+       category, and assigns them to the respective age, household type, and sex.
+
+    Example usage:
+        >>> population_data = Population(year=2023, area="Haga")
+        >>> generate_persons(population_data)
+    """
     if num_persons:
         # If num_persons is specified, use that number
         logger.info(f"Number of persons: {num_persons}") #TODO Not implemented
@@ -55,6 +82,42 @@ def generate_persons(population, num_persons=None):
                     Person(age, sex, household)
 
 def synthesise_population(population, age_split = 45, min_age_of_parent = 25):
+    """
+    Synthesise a population by creating households and assigning attributes to individuals and households.
+
+    This function creates and assigns households, assigns children to households, and sets various
+    attributes such as house type and car ownership for the generated population. The process involves
+    multiple steps to ensure that the synthesized population accurately reflects real-world demographic
+    patterns and household structures.
+
+    Args:
+        population (Population): An instance of the Population class containing demographic data.
+        age_split (int, optional): The age threshold used to categorize children into different age groups.
+                                   Defaults to 45.
+        min_age_of_parent (int, optional): The minimum age for an individual to be considered a parent.
+                                           Defaults to 25.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Retrieves the total number of households for the specified year and area.
+    2. Clears any existing Household instances to start fresh.
+    3. Splits individuals into different lists based on their household type categories (e.g., children,
+       single parents, living alone, married, cohabiting, others).
+    4. Sorts the lists to prioritize older individuals for certain categories.
+    5. Creates households for individuals living alone and single parents.
+    6. Creates households for married and cohabiting couples.
+    7. Assigns remaining individuals to 'Other' category households.
+    8. Assigns children to appropriate households based on their age and household type.
+    9. Assigns house types to households based on the specified year and area.
+    10. Assigns car ownership to households using a pre-trained classifier model.
+    11. Assigns primary status (e.g., studying, working, inactive) to individuals using a pre-trained classifier model.
+
+    Example usage:
+        >>> population_data = Population(year=2023, area="Haga")
+        >>> synthesise_population(population_data)
+    """
     # Get total households
     year = population.year
     area = population.area

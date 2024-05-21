@@ -24,6 +24,26 @@ from tripsender.logconfig import setup_logging
 logger = setup_logging(__name__)
 
 class House:
+    """
+    Represents a housing unit occupied by residents in Gothenburg.
+
+    Each household is assigned a house object that represents the housing unit that the residents occupy.
+    A house is associated with a physical building in Gothenburg. For single-family houses, a single-house
+    object is related to a building; for multi-family houses, multiple house objects are associated with a building.
+
+    The house object contains:
+        - Floor area
+        - Reference to a building
+        - Reference to a household
+        - Unique identifier
+
+    Attributes:
+        uuid (UUID): Unique identifier for the house.
+        household (Household): The household occupying the house.
+        building (Building): The building the house is associated with.
+        building_uuid (UUID): Unique identifier of the building.
+        area (float): Floor area of the house.
+    """
     instances = []
     
     

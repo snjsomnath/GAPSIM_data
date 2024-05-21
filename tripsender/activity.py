@@ -51,7 +51,40 @@ with open (DURATION_DIST_PATH, "r") as f:
     DURATION_DIST = json.load(f)
 
 class Activity:
+    """
+    Represents an activity performed by an individual, based on a sampled and matched activity sequence from the National Household Travel Survey (NHTS).
+
+    An activity object consists of:
+        - Activity purpose
+        - Start time
+        - Duration
+        - End time
+        - Mode of travel
+
+    Attributes:
+        start_time (datetime.time): The starting time of the activity.
+        duration_minutes (int): The duration of the activity in minutes.
+        duration_timedelta (timedelta): The duration of the activity as a timedelta object.
+        end_time (datetime.time): The ending time of the activity.
+        purpose (str): The purpose of the activity (e.g., work, school, shopping).
+        mode (str, optional): The mode of transportation used for the activity (e.g., walking, driving).
+        destination (str, optional): The destination of the activity.
+        destination_coordinates (tuple, optional): The coordinates of the destination.
+        origin (str, optional): The origin of the activity.
+        origin_coordinates (tuple, optional): The coordinates of the origin.
+        calculated_duration (timedelta, optional): The calculated duration of the trip if different from the provided duration.
+        route (list, optional): The route taken for the activity, if applicable.
+    """
     def __init__(self, start_time, duration_minutes, purpose, mode=None):
+        """
+        Initializes an Activity object with the given parameters.
+
+        Args:
+            start_time (str or datetime): The start time of the activity. Can be a string or a datetime object.
+            duration_minutes (int): The duration of the activity in minutes.
+            purpose (str): The purpose of the activity.
+            mode (str, optional): The mode of transportation. Defaults to None.
+        """
         # Use _parse_time_input for consistent time parsing
         parsed_datetime = self._parse_time_input(start_time)
         self.start_time = parsed_datetime.time() if parsed_datetime else None
@@ -437,6 +470,15 @@ class ActivitySequence:
         return gdf
 
     def from_nhts(self, df):
+        """
+        Create an ActivitySequence object from a sampled and matched activity sequence from the National Household Travel Survey (NHTS).
+        
+        Attributes:
+            df (pandas.DataFrame): A DataFrame containing the sampled and matched activity sequence from the NHTS.
+
+        Returns:
+            ActivitySequence: An ActivitySequence object representing the activity sequence.
+        """
         current_date = datetime.now().date()
         start_of_day = datetime.combine(current_date, time(3, 0))
         end_of_day = start_of_day + timedelta(days=1)
@@ -547,6 +589,19 @@ class ActivitySequence:
 
 
     def is_valid(self):
+        """
+        Validates the ActivitySequence object.
+        Specifically, it checks the following:
+            - Start time is before end time for each activity
+            - Duration of each activity is positive
+            - Activities are in increasing order of start time
+            - Activities do not overlap
+            - Sum of activity durations is 24 hours
+            - There is a "Transit" activity 
+            - Mode and purpose are provided for each activity
+        Returns:
+            bool: True if the ActivitySequence is valid, False otherwise.
+        """
         # Check if there are any activities to validate
         if not self.activities:
             return False
@@ -615,6 +670,21 @@ class ActivitySequence:
 
 
 class Location:
+    """
+    Represents a location in the simulation, such as a home, work, school, or other destination.
+
+    Attributes:
+        location_type (str): The type of location (e.g., home, work, school).
+        location_name (str): The name of the location.
+        location_coordinates (Point): The coordinates of the location.
+        location_amenity (str, optional): The amenity of the location (e.g., hospital, park).
+        route_car (Route, optional): The route to the location by car.
+        route_walk (Route, optional): The route to the location by walking.
+        route_bike (Route, optional): The route to the location by biking.
+    """
+
+
+
     def __init__(self, location_type: str, location_name: str, location_coordinates: Point, location_amenity: str = None):
         self.location_type = location_type
         self.location_name = location_name
@@ -629,6 +699,16 @@ class Location:
         return f"{self.location_type} ({self.location_amenity}) - {self.location_name} @ {self.location_coordinates}"
 
 class Route:
+    """
+    Represents a route between two locations, such as a home-to-work commute or a trip to a grocery store.
+
+    Attributes:
+        route_type (str): The type of route (e.g., car, walk, bike).
+        route_path (MultiLineString): The path of the route as a MultiLineString.
+        route_speed_kph (int): The speed of travel along the route in kilometers per hour.
+        route_distance (float): The distance of the route in kilometers.
+        route_travel_time_minutes (int): The travel time along the route in minutes.
+    """
     def __init__(self, route_type: str, route_path: MultiLineString, route_speed_kph: int):
         self.route_type = route_type
         self.route_path = route_path
@@ -643,11 +723,15 @@ class Route:
         logger.info(f"Plotting not defined")
 
 def calculate_duration(start_time, end_time):
-    """Calculate duration in minutes between two datetime objects."""
+    """A helper function that calculates duration in minutes between two datetime objects.    
+    """
     duration = end_time - start_time
     return duration.total_seconds() / 60
 
 def add_travel_home_activity(df):
+    """
+    Add a travel activity to get home after the last activity of the day.
+    """
     # Create a sampler object
     s = sampler.DurationSampler(DURATION_DIST)
     last_row = df.iloc[-1]
@@ -699,7 +783,11 @@ def add_travel_home_activity(df):
 
 # Plotting functions
 def _initialize_activity_counts(bins):
-    """Initialize activity counts for all activity types."""
+    """Initialize activity counts for all activity types.
+    The counts are stored in a dictionary with activity types as keys and lists of counts for each bin as values.
+    The following activity types are considered: Transit, Travel, Grocery, Shopping, Leisure, Home, Work, Education, Healthcare, Pickup/Dropoff child, and Other.
+        
+    """
     return {
         "Transit": [0]*bins,
         "Travel": [0]*bins,
@@ -831,10 +919,6 @@ def _plot_data(area,analysis_type,df, title, color_palette=None, bins=24, save=T
 
     # Show the plot
     plt.show()
-
-
-
-
 
 def create_color_palette(cmap, activity_labels):
     """

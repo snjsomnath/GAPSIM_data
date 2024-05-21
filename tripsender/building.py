@@ -32,6 +32,37 @@ logger = setup_logging(__name__)
 
 
 class Building:
+    """
+    Represents a building in Gothenburg, including its physical attributes and population data.
+
+    A building object refers to an existing building and includes:
+        - Footprint area
+        - Total built-up area
+        - Coordinates (in EPSG:3006 coordinate reference system)
+        - Height of the building (calculated from laser point-cloud data)
+        - Population per floor
+        - Total feasible population for the building
+        - Unique identifier
+        - List of house objects contained within it
+        - List of all people living in the building
+
+    Attributes:
+        uuid (UUID): Unique identifier for the building.
+        type (str): Type of the building (e.g., residential, commercial).
+        area (float): Total area of the building.
+        height (float): Height of the building.
+        floors (int): Number of floors in the building.
+        footprint (Polygon): Footprint area of the building.
+        population_per_floor (int): Population per floor in the building.
+        population_total (int): Total population in the building.
+        built_up_area (float): Total built-up area of the building.
+        houses (List): List of house objects contained within the building.
+        workers (int): Number of workers in the building.
+        worker_list (List): List of workers in the building.
+        coord (Point): Coordinates of the building's centroid.
+        preferred_locations (Optional[PreferredLocations]): Preferred locations for the building.
+    """
+
     instances = []
     def __init__(self, building_type, building_area, building_height, building_floors, footprint,population_per_floor,built_up_area):
         if footprint == None:

@@ -173,6 +173,38 @@ variables_of_interest = {
 
 
 def preprocess_data(df,variables_of_interest = variables_of_interest, weekday = True, unique_trips_only = False, process_durations = False):
+    """
+    Preprocess the NHTS data.
+
+    Args:
+        df (pd.DataFrame): The input dataframe containing NHTS data.
+        variables_of_interest (dict): A dictionary specifying the variables of interest and their types (categorical, numerical, time).
+        weekday (bool): If True, processes data for weekdays; if False, processes data for weekends. Defaults to True.
+        unique_trips_only (bool): If True, removes duplicate trips based on id, start_time, and end_time. Defaults to False.
+        process_durations (bool): If True, processes the durations of activities and travels. Defaults to False.
+
+    Returns:
+        pd.DataFrame: The preprocessed dataframe.
+
+    Notes:
+        - The function replaces specific values indicating no data with NaN and drops rows with NaN values.
+        - It filters the dataframe to include only the specified variables of interest.
+        - The function processes categorical, numerical, and time variables according to their specified types.
+        - It renames columns to standardize names and drops certain columns not needed for further analysis.
+        - If `unique_trips_only` is True, duplicate trips are removed.
+        - If `process_durations` is True, the function calculates the travel and activity durations.
+
+    Examples:
+        >>> variables_of_interest = {
+        ...     'Kön': {'type': 'categorical', 'categories': {1: 'Male', 2: 'Female'}},
+        ...     'Åldersgrupp': {'type': 'categorical', 'categories': {1: '0-17', 2: '18-34', 3: '35-64', 4: '65+'}},
+        ...     'Starttid': {'type': 'time'},
+        ...     'Sluttid': {'type': 'time'},
+        ...     'Reslängd': {'type': 'numerical'},
+        ...     # additional variables...
+        ... }
+        >>> df = preprocess_data(df, variables_of_interest, weekday=True, unique_trips_only=True, process_durations=True)
+    """
 
     if weekday:
         wd = 1

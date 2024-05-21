@@ -24,6 +24,9 @@ from tripsender.logconfig import setup_logging
 logger = setup_logging(__name__)
 
 def fetch_housetype_data(year, area):
+  """
+  Fetches the data for the number of households in different house types in a given area for a given year.
+  """
     url = "http://pxweb.goteborg.se/api/v1/sv/1. Göteborg och dess delområden/Primärområden/Befolkning/Hushåll/31_HHStorlHustyp_PRI.px"
     query = {
   "query": [
@@ -86,6 +89,9 @@ def fetch_housetype_data(year, area):
     return json.loads(data)
 
 def fetch_population_data(year, area):
+  """
+  Fetches the data for the population in a given area for a given year.
+  """
     url = "http://pxweb.goteborg.se/api/v1/sv/1. Göteborg och dess delområden/Primärområden/Befolkning/Folkmängd/Folkmängd helår/60_FolkmHHStallning_PRI.px"
 
     query = {
@@ -132,6 +138,9 @@ def fetch_population_data(year, area):
     return json.loads(data)
 
 def fetch_younger_children_data(year,area):
+  """
+  Fetches the data for the number of households with children under 18 years in a given area for a given year.
+  """
     url = "http://pxweb.goteborg.se/api/v1/sv/1. Göteborg och dess delområden/Primärområden/Befolkning/Hushåll/10_HHTypBarnU18_PRI.px"
     query = {
     "query": [
@@ -178,6 +187,9 @@ def fetch_younger_children_data(year,area):
     return json.loads(data)
 
 def fetch_older_children_data(year,area):
+  """
+  Fetches the data for the number of households with children over 18 years in a given area for a given year.
+  """
     url = "http://pxweb.goteborg.se/api/v1/sv/1. Göteborg och dess delområden/Primärområden/Befolkning/Hushåll/20_Hushallstyp_PRI.px"
     query = {
     "query": [

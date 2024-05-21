@@ -28,6 +28,19 @@ from tripsender.logconfig import setup_logging
 logger = setup_logging(__name__)
 
 class Sampler:
+    """
+    A class to sample from various statistical distributions.
+
+    Attributes:
+        json_data (dict): The input JSON data containing distribution parameters.
+        gmm_cache (dict): Cache for Gaussian Mixture Model (GMM) objects.
+
+    Methods:
+        _get_gmm(num_components, parameters):
+            Retrieve or create a Gaussian Mixture Model (GMM) with the specified number of components and parameters.
+        sample_from_distribution(distribution_type, parameters):
+            Sample from the specified statistical distribution using the provided parameters.
+    """
     def __init__(self, json_data):
         self.json_data = json_data
         self.gmm_cache = {}  # Cache for GMM objects
@@ -79,6 +92,13 @@ class Sampler:
 
 
 class DurationSampler(Sampler):
+    """
+    A class to sample durations based on a specified purpose, extending the Sampler class.
+
+    Methods:
+        sample_duration(purpose, min_duration=None, max_duration=None):
+            Sample a duration for a given purpose, optionally constrained by minimum and maximum duration.
+    """
     def sample_duration(self, purpose, min_duration=None, max_duration=None):
         # Make purpose case insensitive
         purpose = purpose.lower()
@@ -103,6 +123,13 @@ class DurationSampler(Sampler):
 
 
 class StartTimeSampler(Sampler):
+    """
+    A class to sample start times based on a specified purpose, extending the Sampler class.
+
+    Methods:
+        sample_start_time(purpose, min_time=None, max_time=None):
+            Sample a start time for a given purpose, optionally constrained by minimum and maximum time.
+    """
     def sample_start_time(self, purpose, min_time=None, max_time=None):
         if purpose not in self.json_data:
             print(f"No data found for purpose: {purpose}")

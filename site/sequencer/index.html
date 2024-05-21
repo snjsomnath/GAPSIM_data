@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Sequencer - Tripsender Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+        <link href="../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Tripsender Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to tripsender</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">API Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../activity/" class="dropdown-item">activity</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">building</a>
+</li>
+                                    
+<li>
+    <a href="../house/" class="dropdown-item">house</a>
+</li>
+                                    
+<li>
+    <a href="../household/" class="dropdown-item">household</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">io</a>
+</li>
+                                    
+<li>
+    <a href="../location_assignment/" class="dropdown-item">location_assignment</a>
+</li>
+                                    
+<li>
+    <a href="../nhts/" class="dropdown-item">nhts</a>
+</li>
+                                    
+<li>
+    <a href="../od/" class="dropdown-item">od</a>
+</li>
+                                    
+<li>
+    <a href="../person/" class="dropdown-item">person</a>
+</li>
+                                    
+<li>
+    <a href="../population/" class="dropdown-item">population</a>
+</li>
+                                    
+<li>
+    <a href="../routing/" class="dropdown-item">routing</a>
+</li>
+                                    
+<li>
+    <a href="../sampler/" class="dropdown-item">sampler</a>
+</li>
+                                    
+<li>
+    <a href="../synthpop/" class="dropdown-item">synthpop</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">utils</a>
+</li>
+                                    
+<li>
+    <a href="../validation/" class="dropdown-item">validation</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.sequencer" class="nav-link">sequencer</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.sequencer.assign_activity_sequence_to_synthetic_population" class="nav-link">assign_activity_sequence_to_synthetic_population</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.sequencer.filter_survey_df" class="nav-link">filter_survey_df</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.sequencer.process_activity_sequence" class="nav-link">process_activity_sequence</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.sequencer.remap_age" class="nav-link">remap_age</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="tripsender.sequencer"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="tripsender.sequencer.assign_activity_sequence_to_synthetic_population" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">assign_activity_sequence_to_synthetic_population</span><span class="p">(</span><span class="n">min_matches</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>A function to assign activity sequences to the synthetic population</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\sequencer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">assign_activity_sequence_to_synthetic_population</span><span class="p">(</span><span class="n">min_matches</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A function to assign activity sequences to the synthetic population&quot;&quot;&quot;</span>
+    <span class="c1"># Get both surveyed and synthetic dataframes</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Preparing dataframes from synthetic population...&quot;</span><span class="p">)</span>
+    <span class="n">df_synthetic_adults</span><span class="p">,</span> <span class="n">df_survey_adults</span> <span class="o">=</span> <span class="n">prepare_activity_dataframes</span><span class="p">()</span>
+
+    <span class="c1"># Define the order of attributes to match in terms of priority</span>
+    <span class="n">attributes_order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_worker&#39;</span><span class="p">,</span><span class="s1">&#39;age_group&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;has_child&#39;</span><span class="p">,</span> <span class="s1">&#39;has_car&#39;</span><span class="p">,</span> <span class="s1">&#39;house_type&#39;</span><span class="p">,</span> <span class="s1">&#39;household_type&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Assign activity sequences. </span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Assigning activity sequences to synthetic population...&quot;</span><span class="p">)</span>
+    <span class="n">assign_activity_sequences</span><span class="p">(</span><span class="n">df_synthetic_adults</span><span class="p">,</span> <span class="n">df_survey_adults</span><span class="p">,</span> <span class="n">attributes_order</span><span class="p">,</span> <span class="n">min_matches</span><span class="o">=</span><span class="n">min_matches</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Activity sequence assignment complete.&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="tripsender.sequencer.filter_survey_df" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">filter_survey_df</span><span class="p">(</span><span class="n">survey_df</span><span class="p">,</span> <span class="n">synthetic_row</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Filter the survey DataFrame based on the values in a synthetic row.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\sequencer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">filter_survey_df</span><span class="p">(</span><span class="n">survey_df</span><span class="p">,</span> <span class="n">synthetic_row</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter the survey DataFrame based on the values in a synthetic row.&quot;&quot;&quot;</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">survey_df</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="o">==</span> <span class="n">synthetic_row</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">survey_df</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">conditions</span><span class="p">)]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="tripsender.sequencer.process_activity_sequence" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">process_activity_sequence</span><span class="p">(</span><span class="n">NHTS_PATH</span><span class="o">=</span><span class="n">NHTS_PATH</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>A function to read NHTS data and generate meaningful activity sequences and add it to the ActivitySequence.instances list</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\sequencer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">process_activity_sequence</span><span class="p">(</span><span class="n">NHTS_PATH</span> <span class="o">=</span> <span class="n">NHTS_PATH</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A function to read NHTS data and generate meaningful activity sequences and add it to the ActivitySequence.instances list&quot;&quot;&quot;</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting activity sequence assignment...&quot;</span><span class="p">)</span>
+    <span class="c1"># Clear previous instances</span>
+    <span class="n">ActivitySequence</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Read data</span>
+    <span class="n">nhts_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">NHTS_PATH</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+    <span class="c1"># Preprocess data</span>
+    <span class="n">df_persons</span> <span class="o">=</span> <span class="n">nhts</span><span class="o">.</span><span class="n">preprocess_data</span><span class="p">(</span><span class="n">nhts_data</span><span class="p">,</span><span class="n">process_durations</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">weekday</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Setup counters</span>
+    <span class="n">pass_counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fail_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating activity sequences for all persons in NHTS data...&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="n">df_persons</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">activity_sequence</span> <span class="o">=</span> <span class="n">ActivitySequence</span><span class="p">()</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df_persons</span><span class="p">[</span><span class="n">df_persons</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">uid</span><span class="p">]</span>
+        <span class="n">passing</span> <span class="o">=</span> <span class="n">activity_sequence</span><span class="o">.</span><span class="n">from_nhts</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">passing</span><span class="p">:</span>
+            <span class="n">pass_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fail_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generated activity sequences for all persons in NHTS data.&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passing activity sequences: </span><span class="si">{</span><span class="n">pass_counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failing activity sequences: </span><span class="si">{</span><span class="n">fail_counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total activity sequences: </span><span class="si">{</span><span class="n">pass_counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fail_counter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passing %: </span><span class="si">{</span><span class="n">pass_counter</span><span class="o">/</span><span class="p">(</span><span class="n">pass_counter</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fail_counter</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="tripsender.sequencer.remap_age" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">remap_age</span><span class="p">(</span><span class="n">age</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Maps an age to an age group.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\sequencer.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">remap_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Maps an age to an age group.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="mi">16</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">24</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;16-24&#39;</span>
+    <span class="k">elif</span> <span class="mi">25</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">34</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;25-34&#39;</span>
+    <span class="k">elif</span> <span class="mi">35</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">44</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;35-44&#39;</span>
+    <span class="k">elif</span> <span class="mi">45</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">54</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;45-54&#39;</span>
+    <span class="k">elif</span> <span class="mi">55</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">64</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;55-64&#39;</span>
+    <span class="k">elif</span> <span class="mi">65</span> <span class="o">&lt;=</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">74</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;65-74&#39;</span>
+    <span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;75+&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># For ages below 16 or invalid ages</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

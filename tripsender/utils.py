@@ -60,6 +60,27 @@ COUPLE = 'Sammanboende'
 
 PATH_PRIMARY_AREA = "data/primary_area.csv"
 def search_primary_area(query,df = pd.read_csv(PATH_PRIMARY_AREA)):
+    """
+    Search for the best matching primary area from the DataFrame based on the query.
+
+    This function takes a query string and searches for the best matching primary area
+    from the given DataFrame. It calculates the similarity between the query and each
+    primary area in the DataFrame, and returns the best match.
+
+    Args:
+        query (str): The query string to search for.
+        df (pd.DataFrame): The DataFrame containing primary areas. Defaults to reading from PATH_PRIMARY_AREA.
+
+    Returns:
+        str: The best matching primary area.
+
+    The function performs the following steps:
+    1. Converts the query to lowercase for case-insensitive comparison.
+    2. Iterates through each primary area in the DataFrame, converting it to lowercase.
+    3. Calculates the similarity between the query and the current primary area.
+    4. Updates the best match if the current primary area has a higher similarity score.
+    5. Returns the best matching primary area.
+    """
     query = query.lower()  # Convert query to lowercase
 
     best_match = None
@@ -78,6 +99,26 @@ def search_primary_area(query,df = pd.read_csv(PATH_PRIMARY_AREA)):
     return best_match
 
 def calculate_similarity(query, area):
+    """
+    Calculate the similarity between the query and the area.
+
+    This function calculates the similarity score between the query string and the
+    area string based on various criteria such as exact match, missing characters,
+    and common characters.
+
+    Args:
+        query (str): The query string.
+        area (str): The area string to compare with the query.
+
+    Returns:
+        float: The similarity score between the query and the area.
+
+    The function performs the following steps:
+    1. Checks for an exact match and returns a high similarity score if found.
+    2. Checks for missing characters and returns a high similarity score if found.
+    3. Calculates the similarity based on the number of common characters between the query and the area.
+    4. Returns the similarity score.
+    """
     query_len = len(query)
     area_len = len(area)
 
@@ -100,6 +141,29 @@ def calculate_similarity(query, area):
     return similarity
  
 def impute_municipal_children_count(year,area):
+    """
+    Impute the count of children in households within a municipality based on provided data.
+
+    This function fetches municipal children data for the specified year and area,
+    processes the data to impute the count of children in different household categories,
+    and returns the imputed data as dictionaries for households with children aged 0-24 years
+    and 25 years or older.
+
+    Args:
+        year (int): The year for which the data is to be fetched.
+        area (str): The geographical area for which the data is to be fetched.
+
+    Returns:
+        tuple: Two dictionaries containing imputed children counts for households with children
+               aged 0-24 years and 25 years or older.
+
+    The function performs the following steps:
+    1. Fetches municipal children data for the specified year and area.
+    2. Processes the data to create a nested dictionary with children counts for different household categories.
+    3. Transforms the data to calculate the probability of having a certain number of children in each household category.
+    4. Separates the data into two dictionaries based on the age of children (0-24 years and 25 years or older).
+    5. Returns the two dictionaries with imputed children counts.
+    """
     data = fetch_municipal_children_data(year)
 
     # Extract the relevant data from the JSON
@@ -192,6 +256,26 @@ def impute_municipal_children_count(year,area):
     return municipal_children_0_24, municipal_children_25
 
 def get_probability_of_children(year, area):
+    """
+    Calculate the probability of having children in different household types.
+
+    This function fetches data on households with children for the specified year and area,
+    processes the data to calculate the probability of having children in different household types,
+    and returns the calculated probabilities.
+
+    Args:
+        year (int): The year for which the data is to be fetched.
+        area (str): The geographical area for which the data is to be fetched.
+
+    Returns:
+        dict: A dictionary containing the probability of having children in each household type.
+
+    The function performs the following steps:
+    1. Fetches data on households with children for the specified year and area.
+    2. Processes the data to calculate the total number of households in each household type.
+    3. Calculates the probability of having children in each household type based on the fetched data.
+    4. Returns the calculated probabilities.
+    """
     data = fetch_older_children_data(year, area)
     p_children_age = {}
     for item in data["data"]:
@@ -241,7 +325,25 @@ def get_probability_of_children(year, area):
 
 def get_probability_of_housetype(year,area):
     """
-    Returns a dictionary with the probability of each household type in the area
+    Calculate the probability of different household types in a given area.
+
+    This function fetches data on household types for the specified year and area,
+    processes the data to calculate the probability of each household type,
+    and returns the calculated probabilities.
+
+    Args:
+        year (int): The year for which the data is to be fetched.
+        area (str): The geographical area for which the data is to be fetched.
+
+    Returns:
+        dict: A dictionary containing the probability of each household type in the area.
+
+    The function performs the following steps:
+    1. Fetches data on household types for the specified year and area.
+    2. Processes the data to map household types to simplified categories.
+    3. Calculates the total number of households in each category.
+    4. Calculates the percentage of each household type based on the fetched data.
+    5. Returns the calculated probabilities.
     """
     # Fetch the data
     data = fetch_housetype_data(year,area)
@@ -283,9 +385,43 @@ def get_probability_of_housetype(year,area):
     return p_housetype_percentage
 
 def parse_num_children(data):
+    """
+    Parse the number of children from a string.
+
+    This function extracts the number of children from the given data string using regular expressions.
+
+    Args:
+        data (str): The input string containing the number of children.
+
+    Returns:
+        int: The number of children extracted from the input string. Returns 0 if no number is found.
+
+    Example:
+        >>> parse_num_children("3 children")
+        3
+    """
     return int(re.search(r'\d+', data).group()) if re.search(r'\d+', data) else 0
 
 def get_younger_child_probability_matrix(data):
+    """
+    Calculate the probability matrix for the number of younger children in households.
+
+    This function processes the input data to calculate the probability of having a certain number
+    of younger children in different household categories. It returns the resulting probability matrix.
+
+    Args:
+        data (dict): The input data containing household information.
+
+    Returns:
+        dict: A dictionary containing the probability matrix for the number of younger children in households.
+
+    The function performs the following steps:
+    1. Renames household types in the input data to simplified categories.
+    2. Merges data for similar household types.
+    3. Creates a nested dictionary with the count of younger children for each household category.
+    4. Calculates the probability of having a certain number of younger children in each household category.
+    5. Returns the resulting probability matrix.
+    """
     # Step 1: Rename household types
     # Create a dictionary to map the original household types to their replacements
     household_types = {
@@ -339,6 +475,24 @@ def get_younger_child_probability_matrix(data):
     return probability_matrix
 
 def get_older_child_probability_matrix(older_children_data):
+    """
+    Calculate the probability matrix for households with older children (aged 25+ years).
+
+    This function processes the input data to calculate the probability of households having older children.
+    It returns a dictionary with the probability of having older children in different household categories.
+
+    Args:
+        older_children_data (dict): The input data containing information on households with older children.
+
+    Returns:
+        dict: A dictionary containing the probability matrix for households with older children.
+
+    The function performs the following steps:
+    1. Processes the input data to extract household categories and the count of older children.
+    2. Calculates the total number of households with older children.
+    3. Calculates the probability of having older children in each household category.
+    4. Returns the resulting probability matrix.
+    """
     total_older_kids = 0
     keys = []
     probabilities = []
@@ -363,6 +517,23 @@ def get_older_child_probability_matrix(older_children_data):
     return dict(zip(keys, probabilities))
 
 def sample_household_for_older_child(probability_matrix):
+    """
+    Sample a household type based on the probability matrix for older children.
+
+    This function uses the provided probability matrix to randomly sample a household type
+    that is likely to have older children.
+
+    Args:
+        probability_matrix (dict): The probability matrix for households with older children.
+
+    Returns:
+        str: The sampled household type.
+
+    The function performs the following steps:
+    1. Extracts household categories and their corresponding probabilities from the probability matrix.
+    2. Randomly samples a household type based on the extracted probabilities.
+    3. Returns the sampled household type.
+    """
     # Sample a household type based on the probabilities
     household_categories = list(probability_matrix.keys())
     probabilities = list(probability_matrix.values())
@@ -370,6 +541,25 @@ def sample_household_for_older_child(probability_matrix):
     return(sampled_household_type)
 
 def sample_children_category(probability_matrix, household_type):
+    """
+    Sample a children category based on the probability matrix for the given household type.
+
+    This function uses the provided probability matrix to randomly sample a children category
+    for the specified household type.
+
+    Args:
+        probability_matrix (dict): The probability matrix for children categories.
+        household_type (str): The household type for which to sample a children category.
+
+    Returns:
+        int: The sampled children category. Returns None if the household type is not found in the probability matrix.
+
+    The function performs the following steps:
+    1. Checks if the household type exists in the probability matrix.
+    2. Extracts children categories and their corresponding probabilities from the probability matrix.
+    3. Randomly samples a children category based on the extracted probabilities.
+    4. Returns the sampled children category.
+    """
     if household_type in probability_matrix:
         children_categories = list(probability_matrix[household_type].keys())
         probabilities = list(probability_matrix[household_type].values())
@@ -382,6 +572,24 @@ def sample_children_category(probability_matrix, household_type):
         return(None)
 
 def balance_lists(p1, p2):
+    """
+    Balance the lengths of two lists by moving excess individuals to a separate list.
+
+    This function ensures that the two input lists have the same length by moving excess individuals
+    from the longer list to a separate list of unmatched individuals.
+
+    Args:
+        p1 (list): The first list of individuals.
+        p2 (list): The second list of individuals.
+
+    Returns:
+        tuple: A tuple containing the balanced lists and the list of unmatched individuals.
+
+    The function performs the following steps:
+    1. Checks if the lengths of the two lists are equal.
+    2. If not, calculates the difference in lengths and moves excess individuals to a separate list.
+    3. Returns the balanced lists and the list of unmatched individuals.
+    """
     len_p1, len_p2 = len(p1), len(p2)
 
     # Check if the lists are already of equal length
@@ -403,6 +611,26 @@ def balance_lists(p1, p2):
     return p1, p2, unmatched_individuals
 
 def couples_from_individuals(p1,p2):
+    """
+    Create couples from two lists of individuals and form households.
+
+    This function matches individuals from two lists (e.g., males and females) to create couples
+    and form households. It balances the lists, matches individuals based on age, and creates
+    Household instances for each couple.
+
+    Args:
+        p1 (list): The first list of individuals (e.g., males).
+        p2 (list): The second list of individuals (e.g., females).
+
+    Returns:
+        tuple: A tuple containing the number of households created and the list of Household instances.
+
+    The function performs the following steps:
+    1. Balances the lengths of the two lists.
+    2. Matches individuals from the two lists based on age and other criteria.
+    3. Creates Household instances for each matched couple.
+    4. Returns the number of households created and the list of Household instances.
+    """
     households = []
 
     #logger.info(f"There are {len(p1)} males and {len(p2)} females in this group")
@@ -462,7 +690,27 @@ def couples_from_individuals(p1,p2):
     return households_created, households
 
 def preprocess_household_data(aligned_columns = [], drop = [], onehotencode = False):
-    
+    """
+    Preprocess household data for model input.
+
+    This function preprocesses household data by ensuring all required columns are present,
+    dropping specified columns, and optionally one-hot encoding categorical variables.
+
+    Args:
+        aligned_columns (list): List of columns to ensure are present in the DataFrame.
+        drop (list): List of columns to drop from the DataFrame.
+        onehotencode (bool): Whether to one-hot encode categorical variables. Defaults to False.
+
+    Returns:
+        tuple: A tuple containing the preprocessed DataFrame and the list of adult individuals.
+
+    The function performs the following steps:
+    1. Fetches household data and adult individuals.
+    2. Ensures all specified columns are present in the DataFrame.
+    3. Drops specified columns from the DataFrame.
+    4. Optionally one-hot encodes categorical variables.
+    5. Returns the preprocessed DataFrame and the list of adult individuals.
+    """
     
     df, adults = Household.return_nhts(drop=drop, onehotencode=onehotencode)
     
@@ -475,6 +723,25 @@ def preprocess_household_data(aligned_columns = [], drop = [], onehotencode = Fa
     return df, adults
 
 def cap_cars_per_household(households, max_cars=4):
+    """
+    Cap the number of cars per household to a specified maximum.
+
+    This function ensures that no household has more than the specified maximum number of cars.
+    If a household has more cars than the specified maximum, the excess cars are removed and
+    the car ownership status of individuals is updated accordingly.
+
+    Args:
+        households (list): The list of Household instances.
+        max_cars (int): The maximum number of cars allowed per household. Defaults to 4.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Iterates through each household in the list.
+    2. Checks if the household has more cars than the specified maximum.
+    3. If so, removes the excess cars and updates the car ownership status of individuals.
+    """
     for household in households:
         if household.cars > max_cars:
             excess_cars = household.cars - max_cars
@@ -485,6 +752,29 @@ def cap_cars_per_household(households, max_cars=4):
                 person.has_car = False
 
 def assign_cars_to_households(year, area, classifier):
+    """
+    Assign car ownership to households based on a classifier model.
+
+    This function assigns car ownership to households in the specified year and area
+    using a pre-trained classifier model. It predicts the probability of car ownership
+    for each household and assigns cars based on the top predictions.
+
+    Args:
+        year (int): The year for which to assign car ownership.
+        area (str): The geographical area for which to assign car ownership.
+        classifier (object): The pre-trained classifier model for predicting car ownership.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Fetches car ownership data for the specified year and area.
+    2. Preprocesses household data for model input.
+    3. Predicts the probability of car ownership for each household.
+    4. Assigns car ownership based on the top predictions.
+    5. Caps the number of cars per household to a specified maximum.
+    6. Logs the total number of cars after capping.
+    """
     # Provide the estimated total cars and call the function to scale and optionally plot the results
     car_data = fetch_car_data(year,area)
     estimated_total_cars = int(car_data["data"][0]["values"][0])
@@ -520,7 +810,31 @@ def assign_cars_to_households(year, area, classifier):
     logger.info(f"Total cars in neighborhood after capping to 4: {total_cars_after_capping}")
 
 def match_child_to_parent(parent, list_of_children, min_age_of_parent=20, initial_tolerance=5, max_tolerance=20, tolerance_increment=2):
-    """Matches a child to a parent based on age and adds the child to the parent's household."""
+    """
+    Match a child to a parent based on age and add the child to the parent's household.
+
+    This function matches a child to a parent from the list of children based on the age difference
+    between the parent and the child. It uses a tolerance range to find a suitable match and adds
+    the matched child to the parent's household.
+
+    Args:
+        parent (Person): The parent individual.
+        list_of_children (list): The list of child individuals to match.
+        min_age_of_parent (int, optional): The minimum age for a parent. Defaults to 20.
+        initial_tolerance (int, optional): The initial tolerance range for matching. Defaults to 5.
+        max_tolerance (int, optional): The maximum tolerance range for matching. Defaults to 20.
+        tolerance_increment (int, optional): The increment in tolerance range for each iteration. Defaults to 2.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Calculates the proxy age of the child based on the parent's age and minimum age of parent.
+    2. Iterates through the list of children to find a match within the initial tolerance range.
+    3. If no match is found, increases the tolerance range and retries until the maximum tolerance is reached.
+    4. Adds the matched child to the parent's household and removes the child from the list of children.
+    5. Logs the matching process and results.
+    """
 
     # Age difference heuristic based on the parent's age
     proxy_age_of_child = parent.age - min_age_of_parent
@@ -558,6 +872,25 @@ def match_child_to_parent(parent, list_of_children, min_age_of_parent=20, initia
         logger.info(f"match_child_to_parent: No suitable children found for parent {parent.age} of {parent.household_type} even with max tolerance of {max_tolerance} years.")
 
 def assign_primary_status_to_members_backup(classifier):
+    """
+    Assign primary status (e.g., work, education, home) to household members using a backup method.
+
+    This function assigns primary status to household members using a pre-trained classifier model.
+    It predicts the primary status for each individual based on household data and assigns the
+    corresponding status to each member.
+
+    Args:
+        classifier (object): The pre-trained classifier model for predicting primary status.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Preprocesses household data for model input.
+    2. Predicts the primary status for each individual using the classifier.
+    3. Assigns the predicted primary status to each member.
+    4. Logs the distribution of primary status among the household members.
+    """
     aligned_columns = [
         'child_count', 'adult_count', 'car_count', 'x0_Kvinnor', 'x0_Män', 'x0_Other',
         'x1_16-24', 'x1_25-34', 'x1_35-44', 'x1_45-54', 'x1_55-64', 'x1_65-74',
@@ -597,6 +930,28 @@ def assign_primary_status_to_members_backup(classifier):
     logger.info(f"Total number of persons: {len(Person.instances)}")
 
 def assign_primary_status_to_members(year,area,classifier):
+    """
+    Assign primary status (e.g., work, education, home) to household members.
+
+    This function assigns primary status to household members for the specified year and area
+    using a pre-trained classifier model. It predicts the probability of different primary statuses
+    for each individual and assigns the status based on the top predictions.
+
+    Args:
+        year (int): The year for which to assign primary status.
+        area (str): The geographical area for which to assign primary status.
+        classifier (object): The pre-trained classifier model for predicting primary status.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Fetches primary status data for the specified year and area.
+    2. Preprocesses household data for model input.
+    3. Predicts the probability of different primary statuses for each individual.
+    4. Assigns primary status to individuals based on the top predictions.
+    5. Logs the distribution of primary status among the household members.
+    """
     primary_dict = fetch_primary_status(year, area)
     # {'WORK': '6140', 'STUDY': '505', 'INACTIVE': '285'}
     working_count = int(primary_dict['WORK'])
@@ -657,26 +1012,19 @@ def assign_primary_status_to_members(year,area,classifier):
 
 def split_households_by_householdtype():
     """
-    Household status
-    The household status indicates the individual's relationship to other persons 
-    in the household. For a person living alone, the household status is Living alone. A person is
-    defined as a child, regardless of age, when he or she is part of a household with at least one
-    of his or her parents and has no children and/or partner in the same household.
+    Split individuals into different lists based on their household type.
 
-    Partner
-    A person who lives with someone of the opposite sex in a marriage-like relationship without
-    to be married to this person. In the household statistics, cohabiting couples are created according to a model.
-    Cohabiting means people who are not married/registered partners but live together
-    under marriage-like conditions. Of people registered in the same property and
-    apartment with common children are formed as cohabiting couples.
-    To form cohabiting couples of people without common children, an external model is used
-    the following criteria:
-    - The persons are registered on the same property and apartment
-    - The persons are at least 18 years old
-    - The people are of different genders
-    - The age difference between the persons is less than 15 years
-    - The people are not close relatives
-    - Only one possible cohabiting couple can be formed within the household
+    This function splits individuals into different lists based on their household type,
+    such as children, single parents, living alone, married, cohabiting, and others.
+
+    Returns:
+        tuple: A tuple containing lists of individuals for each household type.
+
+    The function performs the following steps:
+    1. Iterates through each individual and categorizes them based on their household type.
+    2. Adds the individuals to the corresponding list for their household type.
+    3. Logs the number of individuals in each household type.
+    4. Returns the lists of individuals for each household type.
     """
     # Create a list of households
     
@@ -725,6 +1073,26 @@ def split_households_by_householdtype():
     return children, single_parents, living_alone, married_males, married_females, cohabiting_males, cohabiting_females, others
 
 def assign_house_type_to_households_old(year, area):
+    """
+    Assign house types to households based on probability data (old method).
+
+    This function assigns house types to households in the specified year and area
+    using probability data fetched from external sources. It uses an older method
+    that directly maps household sizes to house types.
+
+    Args:
+        year (int): The year for which to assign house types.
+        area (str): The geographical area for which to assign house types.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Fetches probability data for house types based on the specified year and area.
+    2. Maps household sizes to the corresponding house type key.
+    3. Assigns house types to households based on the probability data.
+    4. Logs any cases where household size does not match the probability data.
+    """
     p_housetype = get_probability_of_housetype(year, area)
 
     # Define a mapping from household size to the corresponding key in p_housetype
@@ -752,6 +1120,26 @@ def assign_house_type_to_households_old(year, area):
             logger.info(f"assign_house_type_to_households: Household size {household_size} not found in p_housetype")
 
 def assign_house_type_to_households(year, area):
+    """
+    Assign house types to households based on probability data (improved method).
+
+    This function assigns house types to households in the specified year and area
+    using probability data fetched from external sources. It uses an improved method
+    that accounts for varying household sizes and assigns house types accordingly.
+
+    Args:
+        year (int): The year for which to assign house types.
+        area (str): The geographical area for which to assign house types.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Fetches probability data for house types based on the specified year and area.
+    2. Maps household sizes to the corresponding house type key, with special handling for larger households.
+    3. Iterates through each household to assign house types based on the probability data.
+    4. Logs any cases where valid house type data is not available for certain household sizes.
+    """
     p_housetype = get_probability_of_housetype(year, area)
 
     # Define a mapping from household size to the corresponding key in p_housetype
@@ -794,7 +1182,27 @@ def assign_house_type_to_households(year, area):
 
 
 def match_list_household_children(list_household, list_children):
-    """EXPERIMENTAL"""
+    """
+    Match children to households based on the number of children needed.
+
+    This function matches children to households based on the number of children each household
+    needs. It expands the household list based on the number of children required and pairs
+    each child with a household.
+
+    Args:
+        list_household (list): The list of households.
+        list_children (list): The list of children to be matched.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Expands the household list based on the number of children needed in each household.
+    2. Sorts the household list based on the age of a randomly chosen parent.
+    3. Sorts the children list by age.
+    4. Pairs each child with a household and adds the child to the household.
+    5. Logs the matching process and results.
+    """
     new_list_household = []
 
     # Expand household list based on the number of children in each household
@@ -819,6 +1227,32 @@ def match_list_household_children(list_household, list_children):
 
 
 def assign_children_to_households(year, area, children , age_split, min_age_of_parent = 25):
+    """
+    Assign children to households based on age and probability data.
+
+    This function assigns children to households for the specified year and area
+    using probability data and age-based categorization. It splits households into
+    different categories based on the age of the head and assigns children accordingly.
+
+    Args:
+        year (int): The year for which to assign children.
+        area (str): The geographical area for which to assign children.
+        children (list): The list of children to be assigned.
+        age_split (int): The age threshold to categorize households.
+        min_age_of_parent (int, optional): The minimum age for a parent. Defaults to 25.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Determines if a household has children based on probability data.
+    2. Splits households into different categories based on the age of the head.
+    3. Assigns the number of children to each household based on the probability matrix.
+    4. Randomly adjusts the number of children in households to match the total number of children.
+    5. Matches children to households based on the number of children needed.
+    6. Updates the has_child attribute for each person in the household.
+    7. Logs the assignment process and results.
+    """
     # Step 1 - Determine if a household has children
     households = Household.instances
     households.sort(key=lambda household: random.choice([member.age for member in household.members if not member.is_child]))
@@ -914,6 +1348,23 @@ def assign_children_to_households(year, area, children , age_split, min_age_of_p
         household.update_has_child()
 
 def clear_instances():
+    """
+    Clear all instances of Population, Person, House, Household, Building, and ActivitySequence.
+
+    This function clears all instances of the specified classes to reset the data.
+    It ensures that no residual data remains from previous runs.
+
+    Returns:
+        None
+
+    The function performs the following steps:
+    1. Clears all instances of the Population class.
+    2. Clears all instances of the Person class.
+    3. Clears all instances of the House class.
+    4. Clears all instances of the Household class.
+    5. Clears all instances of the Building class.
+    6. Clears all instances of the ActivitySequence class.
+    """
     Population.clear_instances()
     Person.clear_instances()
     House.clear_instances()
