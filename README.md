@@ -3,7 +3,7 @@
 GAPSIM (Gothenburg Activity-based Population Simulator)
 
 # Documentation
-(Click here to visit the documentation site)[https://snjsomnath.github.io/GAPSIM_data/]
+[Click here to visit the documentation site](https://snjsomnath.github.io/GAPSIM_data/)
 
 ## Overview
 GAPSIM_data is a repository for the GAPSIM (Gothenburg Activity-based Population Simulator) project. GAPSIM is a comprehensive simulation tool designed to model and analyze the activity patterns and mobility behaviors of the population in Gothenburg, Sweden. This simulator aims to provide detailed insights into urban planning, transportation systems, and environmental impact assessments.
