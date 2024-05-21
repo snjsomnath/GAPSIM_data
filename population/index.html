@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>population - Tripsender Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+        <link href="../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Tripsender Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to tripsender</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">API Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../activity/" class="dropdown-item">activity</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">building</a>
+</li>
+                                    
+<li>
+    <a href="../house/" class="dropdown-item">house</a>
+</li>
+                                    
+<li>
+    <a href="../household/" class="dropdown-item">household</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">io</a>
+</li>
+                                    
+<li>
+    <a href="../location_assignment/" class="dropdown-item">location_assignment</a>
+</li>
+                                    
+<li>
+    <a href="../nhts/" class="dropdown-item">nhts</a>
+</li>
+                                    
+<li>
+    <a href="../od/" class="dropdown-item">od</a>
+</li>
+                                    
+<li>
+    <a href="../person/" class="dropdown-item">person</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">population</a>
+</li>
+                                    
+<li>
+    <a href="../routing/" class="dropdown-item">routing</a>
+</li>
+                                    
+<li>
+    <a href="../sampler/" class="dropdown-item">sampler</a>
+</li>
+                                    
+<li>
+    <a href="../synthpop/" class="dropdown-item">synthpop</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../person/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../routing/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.population" class="nav-link">population</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.population.Population" class="nav-link">Population</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="tripsender.population"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="tripsender.population.Population" class="doc doc-heading">
+            <code>Population</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+      <p>A class that represents population data for a specific year and area.</p>
+<p>This class facilitates the representation and manipulation of population data.
+It offers methods to initialize population arrays and provides easy access to
+various population metrics such as age, household type, sex, etc.</p>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.year">year</span></code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The year for which the population data is represented.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.area">area</span></code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The geographical area for which the population data is represented.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.variables">variables</span></code></td>
+            <td>
+                  <code><span title="typing.List">List</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of variables associated with the population data.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.variable_categories">variable_categories</span></code></td>
+            <td>
+                  <code><span title="typing.List">List</span>[str]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of categories for each variable.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.comment">comment</span></code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional comments or notes associated with the population data.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.array_age_household_sex">array_age_household_sex</span></code></td>
+            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>3D array representing population data by age, household, and sex.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.array_age_sex">array_age_sex</span></code></td>
+            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>2D array representing population data by age and sex.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.population.Population.array_age_household">array_age_household</span></code></td>
+            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>2D array representing population data by age and household.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="class-attributes" open>
+  <summary>Class Attributes</summary>
+  <p>instances (List[Population]): List to keep track of all instances of the Population class.</p>
+</details>
+
+<details class="example" open>
+  <summary>Example</summary>
+  <blockquote>
+<blockquote>
+<blockquote>
+<p>population_2022_haga = Population(2023, "Haga")
+print(population_2022_haga.year)
+2022
+print(population_2022_haga.area)
+"Haga"</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</details>
+              <details class="quote">
+                <summary>Source code in <code>tripsender\population.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Population</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class that represents population data for a specific year and area.</span>
+
+<span class="sd">    This class facilitates the representation and manipulation of population data.</span>
+<span class="sd">    It offers methods to initialize population arrays and provides easy access to</span>
+<span class="sd">    various population metrics such as age, household type, sex, etc.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        year (int): The year for which the population data is represented.</span>
+<span class="sd">        area (str): The geographical area for which the population data is represented.</span>
+<span class="sd">        variables (List[str]): List of variables associated with the population data.</span>
+<span class="sd">        variable_categories (List[str]): List of categories for each variable.</span>
+<span class="sd">        comment (str): Additional comments or notes associated with the population data.</span>
+<span class="sd">        array_age_household_sex (np.ndarray): 3D array representing population data by age, household, and sex.</span>
+<span class="sd">        array_age_sex (np.ndarray): 2D array representing population data by age and sex.</span>
+<span class="sd">        array_age_household (np.ndarray): 2D array representing population data by age and household.</span>
+<span class="sd">        Other arrays...</span>
+
+<span class="sd">    Class Attributes:</span>
+<span class="sd">        instances (List[Population]): List to keep track of all instances of the Population class.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; population_2022_haga = Population(2023, &quot;Haga&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; print(population_2022_haga.year)</span>
+<span class="sd">        2022</span>
+<span class="sd">        &gt;&gt;&gt; print(population_2022_haga.area)</span>
+<span class="sd">        &quot;Haga&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">instances</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">area</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the Population object by fetching the relevant data.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - year (int): The year for which the population data is required.</span>
+<span class="sd">        - area (str): The geographical area for which the population data is required.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initializing Population object for year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> and area </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_population_data</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">variable_categories</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_population_params</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">area</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variable_categories</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_categories</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">comment</span>
+
+        <span class="c1"># Initialize arrays</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_sex</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_sex</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_sex_household</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_male</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_female</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_population</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">clear_instances</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;A population class with information about the population in a given area and year&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
+            <span class="s2">&quot;area&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">area</span><span class="p">,</span>
+            <span class="s2">&quot;variables&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">variables</span><span class="p">,</span>
+            <span class="s2">&quot;variable_categories&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">variable_categories</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">comment</span><span class="p">,</span>
+            <span class="s2">&quot;total_population&quot;</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">total_population</span>
+         <span class="p">}</span>
+        <span class="k">return</span> <span class="n">info</span>
+
+    <span class="k">def</span> <span class="nf">_create_2d_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">dimension1</span><span class="p">,</span> <span class="n">dimension2</span><span class="p">,</span> <span class="n">dimension3</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="n">categories_dim1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+        <span class="n">categories_dim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension2</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+
+
+
+        <span class="k">if</span> <span class="n">dimension3</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+            <span class="n">categories_dim3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension3</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span> <span class="k">if</span> <span class="n">dimension3</span> <span class="k">else</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+            <span class="n">array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">categories_dim1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories_dim2</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories_dim3</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">dimension3</span> <span class="ow">or</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension3</span><span class="p">]</span> <span class="ow">in</span> <span class="n">categories_dim3</span><span class="p">:</span>
+                    <span class="n">index_dim1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">categories_dim1</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">index_dim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">categories_dim2</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension2</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">index_dim3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">categories_dim3</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension3</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">dimension3</span> <span class="k">else</span> <span class="mi">0</span>
+                    <span class="n">array_2d</span><span class="p">[</span><span class="n">index_dim1</span><span class="p">,</span> <span class="n">index_dim2</span><span class="p">,</span> <span class="n">index_dim3</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">categories_dim3</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+            <span class="n">array_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">categories_dim1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">categories_dim2</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">index_dim1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">categories_dim1</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension1</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">index_dim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">categories_dim2</span> <span class="o">==</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">dimension2</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">array_2d</span><span class="p">[</span><span class="n">index_dim1</span><span class="p">,</span> <span class="n">index_dim2</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">array_2d</span>
+
+    <span class="k">def</span> <span class="nf">_instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_sex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_2d_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension2</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_2d_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension2</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_sex_household</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_2d_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dimension2</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_sex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_2d_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dimension1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dimension3</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_female</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_sex</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_male</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_sex</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Calculate the total population by summing all the values in each array</span>
+        <span class="n">total_alder_kon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array_age_sex</span><span class="p">)</span>
+        <span class="n">total_alder_hushall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array_age_household</span><span class="p">)</span>
+        <span class="n">total_kon_hushall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array_sex_household</span><span class="p">)</span>
+
+        <span class="c1"># Checking if the totals are equal</span>
+        <span class="k">if</span> <span class="n">total_alder_kon</span> <span class="o">==</span> <span class="n">total_alder_hushall</span> <span class="ow">and</span> <span class="n">total_alder_kon</span> <span class="o">==</span> <span class="n">total_kon_hushall</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_population</span> <span class="o">=</span> <span class="n">total_alder_kon</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">total_population</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Total population could not be calculated&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_population_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extracts population parameters from the given result.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        - result (Dict[str, Any]): The fetched result containing population data.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        Tuple: Extracted data, year, area, variables, variable_categories, and comment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="c1"># Extract the relevant data from the JSON</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Extract additional attributes</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+        <span class="n">variable_categories</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">column</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">column</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span>
+        <span class="p">}</span>
+        <span class="n">comment</span> <span class="o">=</span> <span class="n">json_data</span><span class="p">[</span><span class="s1">&#39;columns&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">variable_categories</span><span class="p">,</span> <span class="n">comment</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tripsender.population.Population.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Initializes the Population object by fetching the relevant data.</p>
+<p>Parameters:
+- year (int): The year for which the population data is required.
+- area (str): The geographical area for which the population data is required.</p>
+<p>Returns:
+None</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\population.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">area</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes the Population object by fetching the relevant data.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    - year (int): The year for which the population data is required.</span>
+<span class="sd">    - area (str): The geographical area for which the population data is required.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initializing Population object for year </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2"> and area </span><span class="si">{</span><span class="n">area</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">fetcher</span><span class="o">.</span><span class="n">fetch_population_data</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">variable_categories</span><span class="p">,</span> <span class="n">comment</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_population_params</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">year</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">area</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">variables</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">variable_categories</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">variable_categories</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">comment</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">comment</span>
+
+    <span class="c1"># Initialize arrays</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_sex</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_age_sex</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_sex_household</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_male</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">array_age_household_female</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">total_population</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

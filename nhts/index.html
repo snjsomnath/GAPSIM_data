@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>nhts - Tripsender Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+        <link href="../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Tripsender Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to tripsender</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">API Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../activity/" class="dropdown-item">activity</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">building</a>
+</li>
+                                    
+<li>
+    <a href="../house/" class="dropdown-item">house</a>
+</li>
+                                    
+<li>
+    <a href="../household/" class="dropdown-item">household</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">io</a>
+</li>
+                                    
+<li>
+    <a href="../location_assignment/" class="dropdown-item">location_assignment</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">nhts</a>
+</li>
+                                    
+<li>
+    <a href="../od/" class="dropdown-item">od</a>
+</li>
+                                    
+<li>
+    <a href="../person/" class="dropdown-item">person</a>
+</li>
+                                    
+<li>
+    <a href="../population/" class="dropdown-item">population</a>
+</li>
+                                    
+<li>
+    <a href="../routing/" class="dropdown-item">routing</a>
+</li>
+                                    
+<li>
+    <a href="../sampler/" class="dropdown-item">sampler</a>
+</li>
+                                    
+<li>
+    <a href="../synthpop/" class="dropdown-item">synthpop</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../location_assignment/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../od/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.nhts" class="nav-link">nhts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.nhts.preprocess_data" class="nav-link">preprocess_data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="tripsender.nhts"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="tripsender.nhts.preprocess_data" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">preprocess_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variables_of_interest</span><span class="o">=</span><span class="n">variables_of_interest</span><span class="p">,</span> <span class="n">weekday</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unique_trips_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">process_durations</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Preprocess the NHTS data.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>df</code></td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The input dataframe containing NHTS data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>variables_of_interest</code></td>
+            <td>
+                  <code>dict</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A dictionary specifying the variables of interest and their types (categorical, numerical, time).</p>
+              </div>
+            </td>
+            <td>
+                  <code><span title="tripsender.nhts.variables_of_interest">variables_of_interest</span></code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>weekday</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, processes data for weekdays; if False, processes data for weekends. Defaults to True.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>unique_trips_only</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, removes duplicate trips based on id, start_time, and end_time. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>process_durations</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, processes the durations of activities and travels. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: The preprocessed dataframe.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="notes" open>
+  <summary>Notes</summary>
+  <ul>
+<li>The function replaces specific values indicating no data with NaN and drops rows with NaN values.</li>
+<li>It filters the dataframe to include only the specified variables of interest.</li>
+<li>The function processes categorical, numerical, and time variables according to their specified types.</li>
+<li>It renames columns to standardize names and drops certain columns not needed for further analysis.</li>
+<li>If <code>unique_trips_only</code> is True, duplicate trips are removed.</li>
+<li>If <code>process_durations</code> is True, the function calculates the travel and activity durations.</li>
+</ul>
+</details>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">variables_of_interest</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s1">&#39;Kön&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="s1">&#39;categories&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">}},</span>
+<span class="gp">... </span>    <span class="s1">&#39;Åldersgrupp&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;categorical&#39;</span><span class="p">,</span> <span class="s1">&#39;categories&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;0-17&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;18-34&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;35-64&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;65+&#39;</span><span class="p">}},</span>
+<span class="gp">... </span>    <span class="s1">&#39;Starttid&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;time&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="s1">&#39;Sluttid&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;time&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="s1">&#39;Reslängd&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;numerical&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="c1"># additional variables...</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">preprocess_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variables_of_interest</span><span class="p">,</span> <span class="n">weekday</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unique_trips_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">process_durations</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\nhts.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">preprocess_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">variables_of_interest</span> <span class="o">=</span> <span class="n">variables_of_interest</span><span class="p">,</span> <span class="n">weekday</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">unique_trips_only</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">process_durations</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Preprocess the NHTS data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        df (pd.DataFrame): The input dataframe containing NHTS data.</span>
+<span class="sd">        variables_of_interest (dict): A dictionary specifying the variables of interest and their types (categorical, numerical, time).</span>
+<span class="sd">        weekday (bool): If True, processes data for weekdays; if False, processes data for weekends. Defaults to True.</span>
+<span class="sd">        unique_trips_only (bool): If True, removes duplicate trips based on id, start_time, and end_time. Defaults to False.</span>
+<span class="sd">        process_durations (bool): If True, processes the durations of activities and travels. Defaults to False.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The preprocessed dataframe.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        - The function replaces specific values indicating no data with NaN and drops rows with NaN values.</span>
+<span class="sd">        - It filters the dataframe to include only the specified variables of interest.</span>
+<span class="sd">        - The function processes categorical, numerical, and time variables according to their specified types.</span>
+<span class="sd">        - It renames columns to standardize names and drops certain columns not needed for further analysis.</span>
+<span class="sd">        - If `unique_trips_only` is True, duplicate trips are removed.</span>
+<span class="sd">        - If `process_durations` is True, the function calculates the travel and activity durations.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; variables_of_interest = {</span>
+<span class="sd">        ...     &#39;Kön&#39;: {&#39;type&#39;: &#39;categorical&#39;, &#39;categories&#39;: {1: &#39;Male&#39;, 2: &#39;Female&#39;}},</span>
+<span class="sd">        ...     &#39;Åldersgrupp&#39;: {&#39;type&#39;: &#39;categorical&#39;, &#39;categories&#39;: {1: &#39;0-17&#39;, 2: &#39;18-34&#39;, 3: &#39;35-64&#39;, 4: &#39;65+&#39;}},</span>
+<span class="sd">        ...     &#39;Starttid&#39;: {&#39;type&#39;: &#39;time&#39;},</span>
+<span class="sd">        ...     &#39;Sluttid&#39;: {&#39;type&#39;: &#39;time&#39;},</span>
+<span class="sd">        ...     &#39;Reslängd&#39;: {&#39;type&#39;: &#39;numerical&#39;},</span>
+<span class="sd">        ...     # additional variables...</span>
+<span class="sd">        ... }</span>
+<span class="sd">        &gt;&gt;&gt; df = preprocess_data(df, variables_of_interest, weekday=True, unique_trips_only=True, process_durations=True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">weekday</span><span class="p">:</span>
+        <span class="n">wd</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wd</span> <span class="o">=</span> <span class="mi">2</span>
+
+
+
+    <span class="c1"># Replace &#39;,&#39; with &#39;.&#39; in &#39;Reslängd&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Reslängd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Reslängd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c1"># Replace &#39;,&#39; with &#39;.&#39; in &#39;VIKT_individ&#39;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;VIKT_individ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;VIKT_individ&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="c1"># Filter df to only include variables of interest</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">variables_of_interest</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Replace no data with NaN (-111, 99998, &#39;&#39;, blank)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="o">-</span><span class="mi">111</span><span class="p">,</span> <span class="mi">999998</span><span class="p">,</span> <span class="mi">99998</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">],</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">))</span>
+    <span class="c1"># Drop rows with NaN</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Sort by age</span>
+    <span class="c1">#VARDAG_HELG == 1 for weekday</span>
+    <span class="c1">#VARDAG_HELG == 2 for weekend</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;VARDAG_HELG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">wd</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#Antal_resor_per_pers &gt; 1</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Antal_resor_per_pers&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#TODO - Remove entries for an LPNR with &quot;Home&quot; not the last trip</span>
+    <span class="c1">#Arende == 8 not the last trip</span>
+
+    <span class="c1"># Replace categorical values with strings</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">variables_of_interest</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">variables_of_interest</span><span class="p">[</span><span class="n">variable</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;categorical&#39;</span><span class="p">:</span>
+            <span class="c1"># Change data type to int</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+            <span class="c1"># Replace values with strings</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">variables_of_interest</span><span class="p">[</span><span class="n">variable</span><span class="p">][</span><span class="s1">&#39;categories&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">variables_of_interest</span><span class="p">[</span><span class="n">variable</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;numerical&#39;</span><span class="p">:</span>
+            <span class="c1"># Change data type to int</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">variables_of_interest</span><span class="p">[</span><span class="n">variable</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span>
+            <span class="c1"># Change data type to datetime with format HH:MM:SS</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">)</span>
+            <span class="c1"># Only show hour and minute</span>
+            <span class="c1">#df[variable] = df[variable].dt.strftime(&#39;%H:%M&#39;)</span>
+            <span class="c1"># Set year, month and day to Today from datetime</span>
+            <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">dt</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="n">day</span><span class="p">))</span>
+
+    <span class="c1"># Rename columns - kön to kon Ålder to alder</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;LPNR&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Kön&#39;</span><span class="p">:</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Åldersgrupp&#39;</span><span class="p">:</span> <span class="s1">&#39;age_group&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Bostadstyp&#39;</span> <span class="p">:</span> <span class="s1">&#39;house_type&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Hushållstyp&#39;</span> <span class="p">:</span> <span class="s1">&#39;household_type&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Antal_barn&#39;</span> <span class="p">:</span> <span class="s1">&#39;child_count&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Antal_bilar&#39;</span> <span class="p">:</span> <span class="s1">&#39;car_count&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Antal_vuxna&#39;</span> <span class="p">:</span> <span class="s1">&#39;adult_count&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Starttid&#39;</span> <span class="p">:</span> <span class="s1">&#39;start_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Huvud_fm&#39;</span> <span class="p">:</span> <span class="s1">&#39;mode&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Sluttid&#39;</span> <span class="p">:</span> <span class="s1">&#39;end_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Reslängd&#39;</span> <span class="p">:</span> <span class="s1">&#39;distance_km&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Arende&#39;</span> <span class="p">:</span> <span class="s1">&#39;purpose&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;VIKT_individ&#39;</span> <span class="p">:</span> <span class="s1">&#39;weight_individual&#39;</span>
+        <span class="p">})</span>
+
+    <span class="c1">#Drop &#39;VARDAG_HELG&#39; and &#39;Antal_resor_per_pers&#39;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;VARDAG_HELG&#39;</span><span class="p">,</span> <span class="s1">&#39;Antal_resor_per_pers&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;start_time&#39;</span><span class="p">])</span>
+    <span class="c1"># Create a column called activity_sequence which is the activity number starting from 0 for each id</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;activity_sequence&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span>
+    <span class="c1"># create a column called duration of previous activity</span>
+    <span class="c1"># This is the time between end_time of previous activity and start_time of current activity</span>
+    <span class="c1"># If there is no previous activity, then duration is 0</span>
+    <span class="c1"># If there is no next activity, then duration is 0</span>
+    <span class="c1"># Sort dataframe based on id and activity_sequence</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;start_time&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">unique_trips_only</span><span class="p">:</span>
+        <span class="c1"># Drop duplicates based on id, start_time and end_time</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;start_time&#39;</span><span class="p">,</span> <span class="s1">&#39;end_time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">process_durations</span><span class="p">:</span>
+        <span class="c1"># Create the necessary columns for the entire dataframe</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;travel_duration_minutes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Shift the start times within each group</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;next_travel_start_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;start_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Calculate activity durations</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;activity_duration_minutes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;next_travel_start_time&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;end_time&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Fill NaN values in &#39;next_travel_start_time&#39; and &#39;activity_duration_minutes&#39; if required</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;next_travel_start_time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;next_travel_start_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;activity_duration_minutes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;activity_duration_minutes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

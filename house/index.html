@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>house - Tripsender Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+        <link href="../stylesheets/extra.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Tripsender Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to tripsender</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">API Documentation</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../activity/" class="dropdown-item">activity</a>
+</li>
+                                    
+<li>
+    <a href="../building/" class="dropdown-item">building</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">house</a>
+</li>
+                                    
+<li>
+    <a href="../household/" class="dropdown-item">household</a>
+</li>
+                                    
+<li>
+    <a href="../io/" class="dropdown-item">io</a>
+</li>
+                                    
+<li>
+    <a href="../location_assignment/" class="dropdown-item">location_assignment</a>
+</li>
+                                    
+<li>
+    <a href="../nhts/" class="dropdown-item">nhts</a>
+</li>
+                                    
+<li>
+    <a href="../od/" class="dropdown-item">od</a>
+</li>
+                                    
+<li>
+    <a href="../person/" class="dropdown-item">person</a>
+</li>
+                                    
+<li>
+    <a href="../population/" class="dropdown-item">population</a>
+</li>
+                                    
+<li>
+    <a href="../routing/" class="dropdown-item">routing</a>
+</li>
+                                    
+<li>
+    <a href="../sampler/" class="dropdown-item">sampler</a>
+</li>
+                                    
+<li>
+    <a href="../synthpop/" class="dropdown-item">synthpop</a>
+</li>
+                                    
+<li>
+    <a href="../utils/" class="dropdown-item">utils</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../building/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../household/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.house" class="nav-link">house</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#tripsender.house.House" class="nav-link">House</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="tripsender.house"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="tripsender.house.House" class="doc doc-heading">
+            <code>House</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+      <p>Represents a housing unit occupied by residents in Gothenburg.</p>
+<p>Each household is assigned a house object that represents the housing unit that the residents occupy.
+A house is associated with a physical building in Gothenburg. For single-family houses, a single-house
+object is related to a building; for multi-family houses, multiple house objects are associated with a building.</p>
+
+
+<details class="the-house-object-contains" open>
+  <summary>The house object contains</summary>
+  <ul>
+<li>Floor area</li>
+<li>Reference to a building</li>
+<li>Reference to a household</li>
+<li>Unique identifier</li>
+</ul>
+</details>
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.house.House.uuid">uuid</span></code></td>
+            <td>
+                  <code>UUID</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Unique identifier for the house.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.house.House.household">household</span></code></td>
+            <td>
+                  <code>Household</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The household occupying the house.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.house.House.building">building</span></code></td>
+            <td>
+                  <code>Building</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The building the house is associated with.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.house.House.building_uuid">building_uuid</span></code></td>
+            <td>
+                  <code>UUID</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Unique identifier of the building.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="tripsender.house.House.area">area</span></code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Floor area of the house.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+              <details class="quote">
+                <summary>Source code in <code>tripsender\house.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">House</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Represents a housing unit occupied by residents in Gothenburg.</span>
+
+<span class="sd">    Each household is assigned a house object that represents the housing unit that the residents occupy.</span>
+<span class="sd">    A house is associated with a physical building in Gothenburg. For single-family houses, a single-house</span>
+<span class="sd">    object is related to a building; for multi-family houses, multiple house objects are associated with a building.</span>
+
+<span class="sd">    The house object contains:</span>
+<span class="sd">        - Floor area</span>
+<span class="sd">        - Reference to a building</span>
+<span class="sd">        - Reference to a household</span>
+<span class="sd">        - Unique identifier</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        uuid (UUID): Unique identifier for the house.</span>
+<span class="sd">        household (Household): The household occupying the house.</span>
+<span class="sd">        building (Building): The building the house is associated with.</span>
+<span class="sd">        building_uuid (UUID): Unique identifier of the building.</span>
+<span class="sd">        area (float): Floor area of the house.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">household</span><span class="p">,</span> <span class="n">building</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the House with given attributes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">household</span> <span class="o">=</span> <span class="n">household</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="o">=</span> <span class="n">building</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">building_uuid</span> <span class="o">=</span> <span class="n">building</span><span class="o">.</span><span class="n">uuid</span>
+        <span class="c1"># https://www.scb.se/en/finding-statistics/statistics-by-subject-area/household-finances/income-and-income-distribution/households-housing/pong/statistical-news/households-housing-2019/</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="mi">36</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">houses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">population_total</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Add the origin on the building to the individuals in the household</span>
+        <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
+            <span class="n">member</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coord</span>
+
+        <span class="c1"># For the household used to create the house, set the house attribute to the house</span>
+        <span class="n">household</span><span class="o">.</span><span class="n">house</span> <span class="o">=</span> <span class="bp">self</span>
+
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;A house with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">)</span><span class="si">}</span><span class="s2"> people.&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">clear_instances</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Clear the instances list. &quot;&quot;&quot;</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">return_dataframe</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Return a dataframe with all the instances. &quot;&quot;&quot;</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a dictionary with information about the house.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;House UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+            <span class="s2">&quot;Household UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+            <span class="s2">&quot;Building UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+            <span class="s2">&quot;Members in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">),</span>
+            <span class="s2">&quot;Adults in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">([</span><span class="n">member</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span> <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">is_child</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]),</span>
+            <span class="s2">&quot;Children in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">([</span><span class="n">member</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span> <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">is_child</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]),</span>
+            <span class="s2">&quot;Cars in the household&quot;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">cars</span><span class="p">,</span>
+            <span class="s2">&quot;Area&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">area</span>
+        <span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tripsender.house.House.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">household</span><span class="p">,</span> <span class="n">building</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize the House with given attributes.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\house.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">household</span><span class="p">,</span> <span class="n">building</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the House with given attributes.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">household</span> <span class="o">=</span> <span class="n">household</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">building</span> <span class="o">=</span> <span class="n">building</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">building_uuid</span> <span class="o">=</span> <span class="n">building</span><span class="o">.</span><span class="n">uuid</span>
+    <span class="c1"># https://www.scb.se/en/finding-statistics/statistics-by-subject-area/household-finances/income-and-income-distribution/households-housing/pong/statistical-news/households-housing-2019/</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">area</span> <span class="o">=</span> <span class="mi">36</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">houses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">population_total</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">isEmpty</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">instances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c1"># Add the origin on the building to the individuals in the household</span>
+    <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">:</span>
+        <span class="n">member</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">coord</span>
+
+    <span class="c1"># For the household used to create the house, set the house attribute to the house</span>
+    <span class="n">household</span><span class="o">.</span><span class="n">house</span> <span class="o">=</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tripsender.house.House.clear_instances" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">clear_instances</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Clear the instances list.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\house.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">clear_instances</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Clear the instances list. &quot;&quot;&quot;</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tripsender.house.House.info" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">info</span><span class="p">()</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Returns a dictionary with information about the house.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\house.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a dictionary with information about the house.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;House UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+        <span class="s2">&quot;Household UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+        <span class="s2">&quot;Building UUID&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span>
+        <span class="s2">&quot;Members in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span><span class="p">),</span>
+        <span class="s2">&quot;Adults in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">([</span><span class="n">member</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span> <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">is_child</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]),</span>
+        <span class="s2">&quot;Children in house&quot;</span> <span class="p">:</span> <span class="nb">len</span><span class="p">([</span><span class="n">member</span> <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">members</span> <span class="k">if</span> <span class="n">member</span><span class="o">.</span><span class="n">is_child</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]),</span>
+        <span class="s2">&quot;Cars in the household&quot;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">household</span><span class="o">.</span><span class="n">cars</span><span class="p">,</span>
+        <span class="s2">&quot;Area&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">area</span>
+    <span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tripsender.house.House.return_dataframe" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">return_dataframe</span><span class="p">()</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Return a dataframe with all the instances.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>tripsender\house.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">return_dataframe</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return a dataframe with all the instances. &quot;&quot;&quot;</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">instances</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
