@@ -35,6 +35,3 @@ We would like to thank the following organizations for their support:
 
 ## References
 - Somanath, S., Thuvander, L., & Hollberg, A. (2024). An activity-based synthetic population of Gothenburg, Sweden: Dataset of residents in neighborhoods. [DOI:10.5281/zenodo.10801935](https://doi.org/10.5281/zenodo.10801935)
-
-We hope GAPSIM_data helps you in your research and urban planning projects. Happy modeling!
-```
