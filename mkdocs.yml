@@ -1,4 +1,4 @@
-site_name: Tripsender Documentation
+site_name: GAPSIM Documentation
 extra_css:
   - stylesheets/extra.css
 plugins:

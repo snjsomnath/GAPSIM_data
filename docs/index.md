@@ -1,6 +1,7 @@
-# Introduction to TripSender
+# Introduction to GAPSIM
+GAPSIM (Gothenburg Activity-based Population Simulator)
 
-Welcome to **TripSender**, a library designed for modelling synthetic populations for neighbourhoods in Gothenburg, Sweden. This documentation provides an overview of TripSender’s core functionalities.
+Welcome to **GAPSIM**, a library designed for modelling synthetic populations for neighbourhoods in Gothenburg, Sweden. This documentation provides an overview of GAPSIM's core functionalities.
 
 ## Key Features
 
