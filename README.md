@@ -1,6 +1,7 @@
 
 # GAPSIM_data
 GAPSIM (Gothenburg Activity-based Population Simulator)
+![individual accessibility](acc_2.png)
 
 # Documentation
 [Click here to visit the documentation site](https://snjsomnath.github.io/GAPSIM_data/)
